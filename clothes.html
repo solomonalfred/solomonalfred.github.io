@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Одежда — SportStyle Premium</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="container header-inner">
+      <div class="logo">Sport<span>Style</span> Premium</div>
+      <nav class="nav">
+        <a href="index.html">Главная</a>
+        <a href="clothes.html">Одежда</a>
+        <a href="equipment.html">Инвентарь</a>
+        <a href="nutrition.html">Питание</a>
+        <a href="about.html">О нас</a>
+        <a href="contacts.html">Контакты</a>
+        <button class="theme-btn" id="themeToggle">Тема</button>
+      </nav>
+    </div>
+  </header>
+
+  <section class="page-banner">
+    <div class="container">
+      <h1>Спортивная одежда</h1>
+      <p>Коллекции для тренажерного зала, бега и активного образа жизни</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="filter-search-wrap">
+        <div class="filter-bar">
+          <button class="filter-btn active" data-filter="all">Все</button>
+          <button class="filter-btn" data-filter="men">Мужское</button>
+          <button class="filter-btn" data-filter="women">Женское</button>
+        </div>
+
+        <div class="search-box">
+          <input type="text" id="searchInput" placeholder="Поиск товара по названию или описанию" />
+          <button class="search-btn">Поиск</button>
+        </div>
+      </div>
+
+      <div class="products">
+        <div class="product fade-in" data-category="men">
+          <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=1200&q=80" alt="Футболка" />
+          <div class="product-content">
+            <div class="product-topline">
+              <h3>Футболка DryFit</h3>
+              <span class="category-pill">Мужское</span>
+            </div>
+            <p>Легкая футболка для интенсивных тренировок и комфортного движения.</p>
+            <div class="price">2 490 ₽</div>
+            <div class="product-actions">
+              <button class="btn btn-primary add-to-cart" data-name="Футболка DryFit" data-price="2490">Купить</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product fade-in" data-category="women">
+          <img src="https://images.unsplash.com/photo-1506629905607-d9b1c1c29db3?auto=format&fit=crop&w=1200&q=80" alt="Лосины" />
+          <div class="product-content">
+            <div class="product-topline">
+              <h3>Лосины Motion</h3>
+              <span class="category-pill">Женское</span>
+            </div>
+            <p>Эластичные лосины для фитнеса, растяжки и функциональных тренировок.</p>
+            <div class="price">3 190 ₽</div>
+            <div class="product-actions">
+              <button class="btn btn-primary add-to-cart" data-name="Лосины Motion" data-price="3190">Купить</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product fade-in" data-category="men">
+          <img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=1200&q=80" alt="Худи" />
+          <div class="product-content">
+            <div class="product-topline">
+              <h3>Худи PowerMove</h3>
+              <span class="category-pill">Мужское</span>
+            </div>
+            <p>Удобное худи для улицы, зала и повседневного спортивного образа.</p>
+            <div class="price">4 990 ₽</div>
+            <div class="product-actions">
+              <button class="btn btn-primary add-to-cart" data-name="Худи PowerMove" data-price="4990">Купить</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cart-panel fade-in">
+        <h3>Корзина</h3>
+        <div id="cartItems" class="cart-items"></div>
+        <div class="cart-total">Итого: <span id="cartTotal">0 ₽</span></div>
+        <div class="cart-actions">
+          <button class="clear-cart-btn" id="clearCart">Очистить корзину</button>
+          <button class="checkout-btn" id="checkoutBtn">Оформить заказ</button>
+        </div>
+      </div>
+
+      <a class="back-link" href="index.html">← Вернуться на главную</a>
+    </div>
+  </section>
+
+  <div class="modal" id="orderModal">
+    <div class="modal-content">
+      <h3>Заказ оформлен</h3>
+      <p>Спасибо за ваш выбор. Демонстрационный заказ успешно создан.</p>
+      <div class="modal-actions">
+        <button class="btn btn-primary" id="closeModal">Закрыть</button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <p>© 2026 SportStyle Premium. Раздел: одежда.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Инвентарь — SportStyle Premium</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="container header-inner">
+      <div class="logo">Sport<span>Style</span> Premium</div>
+      <nav class="nav">
+        <a href="index.html">Главная</a>
+        <a href="clothes.html">Одежда</a>
+        <a href="equipment.html">Инвентарь</a>
+        <a href="nutrition.html">Питание</a>
+        <a href="about.html">О нас</a>
+        <a href="contacts.html">Контакты</a>
+        <button class="theme-btn" id="themeToggle">Тема</button>
+      </nav>
+    </div>
+  </header>
+
+  <section class="page-banner">
+    <div class="container">
+      <h1>Спортивный инвентарь</h1>
+      <p>Товары для домашних тренировок, кардио и силовой подготовки</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="filter-search-wrap">
+        <div class="filter-bar">
+          <button class="filter-btn active" data-filter="all">Все</button>
+          <button class="filter-btn" data-filter="home">Для дома</button>
+          <button class="filter-btn" data-filter="gym">Для зала</button>
+        </div>
+
+        <div class="search-box">
+          <input type="text" id="searchInput" placeholder="Поиск инвентаря" />
+          <button class="search-btn">Поиск</button>
+        </div>
+      </div>
+
+      <div class="products">
+        <div class="product fade-in" data-category="home">
+          <img src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=1200&q=80" alt="Гантели" />
+          <div class="product-content">
+            <div class="product-topline">
+              <h3>Набор гантелей</h3>
+              <span class="category-pill">Для дома</span>
+            </div>
+            <p>Комплект для силовых тренировок дома с удобным хватом.</p>
+            <div class="price">6 990 ₽</div>
+            <div class="product-actions">
+              <button class="btn btn-primary add-to-cart" data-name="Набор гантелей" data-price="6990">Купить</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product fade-in" data-category="home">
+          <img src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=1200&q=80" alt="Коврик" />
+          <div class="product-content">
+            <div class="product-topline">
+              <h3>Коврик для йоги</h3>
+              <span class="category-pill">Для дома</span>
+            </div>
+            <p>Мягкий и нескользящий коврик для фитнеса, растяжки и йоги.</p>
+            <div class="price">1 990 ₽</div>
+            <div class="product-actions">
+              <button class="btn btn-primary add-to-cart" data-name="Коврик для йоги" data-price="1990">Купить</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product fade-in" data-category="gym">
+          <img src="https://images.unsplash.com/photo-1599058917212-d750089bc07e?auto=format&fit=crop&w=1200&q=80" alt="Скакалка" />
+          <div class="product-content">
+            <div class="product-topline">
+              <h3>Скакалка Speed Pro</h3>
+              <span class="category-pill">Для зала</span>
+            </div>
+            <p>Инвентарь для кардио, разогрева и функциональных тренировок.</p>
+            <div class="price">990 ₽</div>
+            <div class="product-actions">
+              <button class="btn btn-primary add-to-cart" data-name="Скакалка Speed Pro" data-price="990">Купить</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cart-panel fade-in">
+        <h3>Корзина</h3>
+        <div id="cartItems" class="cart-items"></div>
+        <div class="cart-total">Итого: <span id="cartTotal">0 ₽</span></div>
+        <div class="cart-actions">
+          <button class="clear-cart-btn" id="clearCart">Очистить корзину</button>
+          <button class="checkout-btn" id="checkoutBtn">Оформить заказ</button>
+        </div>
+      </div>
+
+      <a class="back-link" href="index.html">← Вернуться на главную</a>
+    </div>
+  </section>
+
+  <div class="modal" id="orderModal">
+    <div class="modal-content">
+      <h3>Заказ оформлен</h3>
+      <p>Ваш заказ по спортивному инвентарю успешно оформлен в демо-режиме.</p>
+      <div class="modal-actions">
+        <button class="btn btn-primary" id="closeModal">Закрыть</button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <p>© 2026 SportStyle Premium. Раздел: инвентарь.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
