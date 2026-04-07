@@ -170,7 +170,6 @@
   <script src="data.js"></script>
   <script src="script.js"></script>
   <script>
-    /* Рендер данных со страницы «О нас» из config.js */
     document.addEventListener("DOMContentLoaded", () => {
       if (typeof SITE_CONFIG === "undefined") return;
       const a = SITE_CONFIG.about;
@@ -185,6 +184,10 @@
         `;
       }
 
+      const obs = new IntersectionObserver(entries => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add("show"); obs.unobserve(e.target); } });
+      }, { threshold: 0.05 });
+
       /* Принципы */
       const valuesGrid = document.getElementById("valuesGrid");
       if (valuesGrid) {
@@ -194,11 +197,7 @@
             <p>${v.text}</p>
           </div>
         `).join("");
-        valuesGrid.querySelectorAll(".fade-in").forEach(el => {
-          new IntersectionObserver(entries => {
-            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add("show"); });
-          }, { threshold: 0.1 }).observe(el);
-        });
+        valuesGrid.querySelectorAll(".fade-in").forEach(el => obs.observe(el));
       }
 
       /* Статистика */
@@ -210,6 +209,7 @@
             <div class="stat-label">${s.label}</div>
           </div>
         `).join("");
+        statsGrid.querySelectorAll(".fade-in").forEach(el => obs.observe(el));
       }
     });
   </script>

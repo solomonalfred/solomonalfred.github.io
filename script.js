@@ -1,8 +1,3 @@
-/**
- * SportStyle Premium — script.js
- * Читает данные из data.js и config.js, строит страницы динамически
- */
-
 document.addEventListener("DOMContentLoaded", () => {
 
   /* ── ТЁМНАЯ ТЕМА ── */
@@ -15,8 +10,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /* ── FADE IN при скролле ── */
   const io = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add("show"); });
-  }, { threshold: 0.1 });
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add("show"); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.05, rootMargin: "0px 0px -20px 0px" });
   document.querySelectorAll(".fade-in").forEach(el => io.observe(el));
 
   /* ═══════════════════════════════════════
@@ -37,14 +34,12 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function updateCartUI() {
-    /* Счётчик в хедере */
     document.querySelectorAll(".cart-count").forEach(el => {
       const n = cartCount();
       el.textContent = n;
       el.style.display = n > 0 ? "flex" : "none";
     });
 
-    /* Сайдбар корзины */
     const sideItems = document.getElementById("sideCartItems");
     const sideTotal = document.getElementById("sideCartTotal");
     if (sideItems) {
@@ -69,8 +64,6 @@ document.addEventListener("DOMContentLoaded", () => {
       }
       if (sideTotal) sideTotal.textContent = cartTotal().toLocaleString("ru-RU") + " ₽";
     }
-
-    /* Встроенная панель корзины (страница каталога) */
     const panelItems = document.getElementById("cartItems");
     const panelTotal = document.getElementById("cartTotal");
     if (panelItems) {
@@ -109,12 +102,10 @@ document.addEventListener("DOMContentLoaded", () => {
     openCart();
   }
 
-  /* Кнопки «Купить» */
   document.querySelectorAll(".add-to-cart").forEach(btn => {
     btn.addEventListener("click", () => addToCart(btn.dataset.name, btn.dataset.price));
   });
 
-  /* Очистить корзину */
   document.getElementById("clearCart")?.addEventListener("click", () => {
     cart = []; saveCart(); updateCartUI();
   });
@@ -122,7 +113,6 @@ document.addEventListener("DOMContentLoaded", () => {
     cart = []; saveCart(); updateCartUI();
   });
 
-  /* Оформить заказ */
   function handleCheckout() {
     if (cart.length === 0) { alert("Корзина пуста"); return; }
     cart = []; saveCart(); updateCartUI();
@@ -133,12 +123,10 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("checkoutBtn")?.addEventListener("click", handleCheckout);
   document.getElementById("sideCheckoutBtn")?.addEventListener("click", handleCheckout);
 
-  /* Закрыть модалку заказа */
   const orderModal = document.getElementById("orderModal");
   document.getElementById("closeModal")?.addEventListener("click", () => orderModal?.classList.remove("open"));
   orderModal?.addEventListener("click", e => { if (e.target === orderModal) orderModal.classList.remove("open"); });
 
-  /* ── Сайдбар корзины ── */
   const cartSidebar = document.getElementById("cartSidebar");
   const cartOverlay = document.getElementById("cartOverlay");
 
@@ -217,13 +205,10 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
       `).join("");
 
-      /* Навесить обработчики на новые кнопки */
       productContainer.querySelectorAll(".add-to-cart").forEach(btn => {
         btn.addEventListener("click", () => addToCart(btn.dataset.name, btn.dataset.price));
       });
     }
-
-    /* Фильтры */
     document.querySelectorAll(".filter-item").forEach(btn => {
       btn.addEventListener("click", () => {
         document.querySelectorAll(".filter-item").forEach(b => b.classList.remove("active"));
@@ -233,7 +218,6 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
 
-    /* Поиск */
     const searchEl = document.getElementById("catalogSearch");
     searchEl?.addEventListener("input", e => {
       searchQuery = e.target.value.trim().toLowerCase();
@@ -242,6 +226,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
     renderProducts();
   }
+  function observeNew(container) {
+    container.querySelectorAll(".fade-in").forEach(el => io.observe(el));
+  }
+  function showNow(container) {
+    container.querySelectorAll(".fade-in").forEach(el => {
+      el.classList.add("show");
+    });
+  }
 
   /* ═══════════════════════════════════════
      РЕНДЕР FAQ ИЗ config.js
@@ -249,7 +241,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const faqContainer = document.getElementById("faqList");
   if (faqContainer && typeof SITE_CONFIG !== "undefined") {
     faqContainer.innerHTML = SITE_CONFIG.faq.map((item, i) => `
-      <div class="faq-item fade-in">
+      <div class="faq-item">
         <div class="faq-question" data-idx="${i}">
           <span>${item.question}</span>
           <span class="faq-arrow">▼</span>
@@ -262,8 +254,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     faqContainer.querySelectorAll(".faq-question").forEach(q => {
       q.addEventListener("click", () => {
-        const item = q.closest(".faq-item");
-        item.classList.toggle("open");
+        q.closest(".faq-item").classList.toggle("open");
       });
     });
   }
@@ -280,7 +271,7 @@ document.addEventListener("DOMContentLoaded", () => {
         <div class="review-author">${r.name}</div>
       </div>
     `).join("");
-    reviewsContainer.querySelectorAll(".fade-in").forEach(el => io.observe(el));
+    observeNew(reviewsContainer);
   }
 
   /* ═══════════════════════════════════════
@@ -329,8 +320,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const q = document.getElementById("headerSearchInput")?.value.trim();
     if (q) window.location.href = `clothes.html?q=${encodeURIComponent(q)}`;
   });
-
-  /* Подхватить параметр ?q= на страницах каталога */
   const urlQ = new URLSearchParams(window.location.search).get("q");
   if (urlQ) {
     const si = document.getElementById("catalogSearch");

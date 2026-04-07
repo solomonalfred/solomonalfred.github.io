@@ -64,10 +64,6 @@ const PRODUCTS = {
       inStock:  true
     }
   ],
-
-  /* ─────────────────────────────────
-     ПИТАНИЕ  (nutrition.html)
-  ───────────────────────────────── */
   nutrition: [
     {
       id:       "whey-protein-vanilla",

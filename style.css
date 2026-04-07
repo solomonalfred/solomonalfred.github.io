@@ -1,8 +1,3 @@
-/* ============================================================
-   SportStyle Premium — style.css
-   Дизайн: sportcity74-inspired, original blue/green palette
-   ============================================================ */
-
 @import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap');
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -71,7 +66,6 @@ button, input, textarea, select { font: inherit; }
 .topbar-contacts { display: flex; gap: 20px; }
 .topbar-right { display: flex; gap: 20px; align-items: center; }
 
-/* ── MAIN HEADER ── */
 .header {
   background: var(--header-bg);
   position: sticky;
@@ -95,7 +89,6 @@ button, input, textarea, select { font: inherit; }
 }
 .logo span { color: #22c55e; }
 
-/* Search */
 .header-search {
   flex: 1;
   max-width: 520px;
@@ -177,8 +170,6 @@ button, input, textarea, select { font: inherit; }
   transition: background .2s;
 }
 .theme-btn:hover { background: rgba(255,255,255,.18); }
-
-/* ── CATEGORY NAV BAR ── */
 .cat-nav {
   background: var(--header-bg);
   border-top: 1px solid rgba(255,255,255,.06);
@@ -208,7 +199,6 @@ button, input, textarea, select { font: inherit; }
   border-bottom-color: #22c55e;
 }
 
-/* ── HERO ── */
 .hero {
   background: radial-gradient(circle at 70% 50%, rgba(34,197,94,.18) 0%, transparent 50%),
               linear-gradient(135deg, var(--hero1) 0%, var(--hero2) 100%);
@@ -286,7 +276,6 @@ button, input, textarea, select { font: inherit; }
   box-shadow: 0 20px 50px rgba(0,0,0,.4);
 }
 
-/* ── BENEFITS STRIP ── */
 .benefits-strip {
   background: var(--bg2);
   border-bottom: 1px solid var(--border);
@@ -311,7 +300,6 @@ button, input, textarea, select { font: inherit; }
 .benefit-title { font-weight: 700; font-size: 14px; margin-bottom: 2px; }
 .benefit-text { font-size: 12.5px; color: var(--text2); line-height: 1.4; }
 
-/* ── SECTION ── */
 .section { padding: 52px 0; }
 .section-head {
   display: flex;
@@ -335,7 +323,6 @@ button, input, textarea, select { font: inherit; }
 }
 .section-link:hover { text-decoration: underline; }
 
-/* ── CATEGORY BLOCKS ── */
 .cat-blocks {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -392,7 +379,6 @@ button, input, textarea, select { font: inherit; }
 }
 .cat-block:hover .cat-block-btn { background: #22c55e; color: #fff; }
 
-/* ── PRODUCT GRID ── */
 .product-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -483,7 +469,6 @@ body.dark .product-cat-pill { background: #1e3a8a; color: #bfdbfe; }
 }
 .add-to-cart:hover { background: var(--accent-h); transform: translateY(-1px); }
 
-/* ── CATALOG PAGE LAYOUT ── */
 .catalog-layout {
   display: grid;
   grid-template-columns: 240px 1fr;
@@ -528,7 +513,6 @@ body.dark .product-cat-pill { background: #1e3a8a; color: #bfdbfe; }
   color: var(--text2);
 }
 
-/* ── SEARCH BAR (catalog page) ── */
 .catalog-topbar {
   display: flex;
   align-items: center;
@@ -568,7 +552,6 @@ body.dark .product-cat-pill { background: #1e3a8a; color: #bfdbfe; }
 .catalog-search button:hover { background: var(--accent-h); }
 .catalog-count { font-size: 14px; color: var(--text2); }
 
-/* ── CART PANEL ── */
 .cart-panel {
   background: var(--bg2);
   border: 1px solid var(--border);
@@ -656,7 +639,6 @@ body.dark .remove-btn { background: rgba(220,38,38,.2); }
 }
 .btn-checkout:hover { background: var(--green-h); }
 
-/* ── PAGE BANNER ── */
 .page-banner {
   background: linear-gradient(135deg, #0b1220 0%, #1e3a8a 100%);
   color: #fff;
@@ -684,7 +666,6 @@ body.dark .remove-btn { background: rgba(220,38,38,.2); }
 .breadcrumb a { color: rgba(255,255,255,.6); }
 .breadcrumb a:hover { color: #fff; }
 
-/* ── ABOUT PAGE ── */
 .about-grid {
   display: grid;
   grid-template-columns: 1fr 1.1fr;
@@ -746,7 +727,6 @@ body.dark .remove-btn { background: rgba(220,38,38,.2); }
 }
 .stat-label { font-size: 13px; color: var(--text2); }
 
-/* ── FAQ ── */
 .faq-list { display: flex; flex-direction: column; gap: 10px; max-width: 860px; margin: 0 auto; }
 .faq-item {
   background: var(--bg2);
@@ -781,7 +761,6 @@ body.dark .remove-btn { background: rgba(220,38,38,.2); }
 }
 .faq-item.open .faq-answer { max-height: 300px; }
 
-/* ── REVIEWS ── */
 .reviews-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -797,7 +776,6 @@ body.dark .remove-btn { background: rgba(220,38,38,.2); }
 .review-text { font-size: 14px; color: var(--text2); line-height: 1.6; margin-bottom: 14px; }
 .review-author { font-size: 13px; font-weight: 700; }
 
-/* ── CONTACTS ── */
 .contact-grid {
   display: grid;
   grid-template-columns: 1fr 1.2fr;
@@ -863,7 +841,6 @@ body.dark .remove-btn { background: rgba(220,38,38,.2); }
 .form-msg.ok { color: #16a34a; }
 .form-msg.err { color: #dc2626; }
 
-/* ── MODAL ── */
 .modal-backdrop {
   position: fixed;
   inset: 0;
@@ -906,7 +883,6 @@ body.dark .remove-btn { background: rgba(220,38,38,.2); }
 }
 .modal-close:hover { background: var(--accent-h); }
 
-/* ── CART SIDEBAR (slide-out) ── */
 .cart-sidebar {
   position: fixed;
   top: 0; right: 0;
@@ -978,7 +954,6 @@ body.dark .remove-btn { background: rgba(220,38,38,.2); }
   color: var(--accent);
 }
 
-/* ── FOOTER ── */
 .footer {
   background: var(--header-bg);
   color: rgba(255,255,255,.7);
@@ -1020,7 +995,6 @@ body.dark .remove-btn { background: rgba(220,38,38,.2); }
 .footer-bottom-links a { color: rgba(255,255,255,.5); }
 .footer-bottom-links a:hover { color: #fff; }
 
-/* ── BACK LINK ── */
 .back-link {
   display: inline-flex;
   align-items: center;
@@ -1032,10 +1006,8 @@ body.dark .remove-btn { background: rgba(220,38,38,.2); }
 }
 .back-link:hover { text-decoration: underline; }
 
-/* ── HIDDEN ── */
 .hidden { display: none !important; }
 
-/* ── FADE IN ── */
 .fade-in {
   opacity: 0;
   transform: translateY(20px);
@@ -1043,7 +1015,6 @@ body.dark .remove-btn { background: rgba(220,38,38,.2); }
 }
 .fade-in.show { opacity: 1; transform: translateY(0); }
 
-/* ═══ RESPONSIVE ═══ */
 @media (max-width: 1024px) {
   .footer-grid { grid-template-columns: 1fr 1fr; }
   .stats-grid { grid-template-columns: repeat(2, 1fr); }
