@@ -3,147 +3,289 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SportStyle Premium — Всё для спорта</title>
+  <title>SportStyle Premium — Всё для спорта и активной жизни</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+
+  <!-- TOP BAR -->
+  <div class="topbar">
+    <div class="container topbar-inner">
+      <div class="topbar-contacts">
+        <span>📍 Москва, ул. Спортивная, 15</span>
+        <a href="tel:+79991234567">📞 +7 (999) 123-45-67</a>
+        <span>⏰ Ежедневно 10:00–21:00</span>
+      </div>
+      <div class="topbar-right">
+        <a href="about.html">О компании</a>
+        <a href="contacts.html">Контакты</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- HEADER -->
   <header class="header">
-    <div class="container header-inner">
-      <div class="logo">Sport<span>Style</span> Premium</div>
-      <nav class="nav">
-        <a href="index.html">Главная</a>
-        <a href="clothes.html">Одежда</a>
-        <a href="equipment.html">Инвентарь</a>
-        <a href="nutrition.html">Питание</a>
+    <div class="container header-main">
+      <a class="logo" href="index.html">Sport<span>Style</span> Premium</a>
+
+      <form class="header-search" id="headerSearchForm">
+        <input type="text" id="headerSearchInput" placeholder="Найти товар, бренд, категорию…" />
+        <button type="submit">🔍</button>
+      </form>
+
+      <div class="header-actions">
+        <button class="theme-btn" id="themeToggle">🌙</button>
+        <button class="cart-btn">
+          🛒 Корзина
+          <span class="cart-count" style="display:none">0</span>
+        </button>
+      </div>
+    </div>
+
+    <nav class="cat-nav">
+      <div class="container cat-nav-inner">
+        <a href="index.html" class="active">Главная</a>
+        <a href="clothes.html">👕 Одежда</a>
+        <a href="equipment.html">🏋️ Инвентарь</a>
+        <a href="nutrition.html">💊 Питание</a>
         <a href="about.html">О нас</a>
         <a href="contacts.html">Контакты</a>
-        <button class="theme-btn" id="themeToggle">Тема</button>
-      </nav>
-    </div>
+      </div>
+    </nav>
   </header>
 
+  <!-- CART SIDEBAR -->
+  <div class="cart-sidebar-overlay" id="cartOverlay"></div>
+  <aside class="cart-sidebar" id="cartSidebar">
+    <div class="cart-sidebar-header">
+      <h3>🛒 Ваша корзина</h3>
+      <button class="cart-close-btn" id="cartCloseBtn">✕</button>
+    </div>
+    <div class="cart-sidebar-items" id="sideCartItems"></div>
+    <div class="cart-sidebar-footer">
+      <div class="cart-sidebar-total">
+        <span>Итого:</span>
+        <span class="cart-sidebar-total-val" id="sideCartTotal">0 ₽</span>
+      </div>
+      <div class="cart-actions">
+        <button class="btn-clear" id="sideCartClear">Очистить</button>
+        <button class="btn-checkout" id="sideCheckoutBtn">Оформить заказ</button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- HERO -->
   <section class="hero">
     <div class="container hero-grid">
       <div class="fade-in">
-        <div class="badge">Премиальный спортивный магазин</div>
-        <h1>Всё для спорта, тренировок и активного образа жизни</h1>
-        <p>
-          Современный многостраничный сайт с дорогим визуальным стилем,
-          каталогом товаров, корзиной, фильтрами, поиском и удобной навигацией.
+        <div class="hero-badge">⚡ Новая коллекция 2026</div>
+        <h1>Экипировка для тех, кто не останавливается</h1>
+        <p class="hero-sub">
+          Одежда, инвентарь и спортивное питание — всё, что нужно для тренировок
+          дома, в зале и на улице. Доставка по Москве за 1 день.
         </p>
-        <div class="hero-buttons">
-          <a class="btn btn-primary" href="#catalog">Перейти в каталог</a>
-          <a class="btn btn-secondary" href="about.html">Узнать о бренде</a>
+        <div class="hero-btns">
+          <a class="btn-primary" href="#catalog">Смотреть каталог</a>
+          <a class="btn-outline" href="about.html">О компании</a>
         </div>
       </div>
-      <div class="hero-image fade-in">
-        <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=1400&q=80" alt="Спорт" />
+      <div class="hero-img fade-in">
+        <img src="images/hero.jpg"
+          alt="Спортивные тренировки"
+          onerror="this.src='https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=1000&q=80'">
       </div>
     </div>
   </section>
 
+  <!-- BENEFITS STRIP -->
+  <div class="benefits-strip">
+    <div class="container">
+      <div class="benefits-grid" id="benefitsGrid"></div>
+    </div>
+  </div>
+
+  <!-- CATEGORIES -->
   <section class="section" id="catalog">
     <div class="container">
-      <h2 class="section-title fade-in">Основные категории</h2>
-      <p class="section-subtitle fade-in">Выберите нужный раздел и перейдите к товарам</p>
-
-      <div class="cards">
-        <a class="card fade-in" href="clothes.html">
-          <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1200&q=80" alt="Одежда" />
-          <div class="card-content">
-            <h3>Спортивная одежда</h3>
-            <p>Коллекции для тренировок, бега, фитнеса и повседневного стиля.</p>
-            <span class="btn btn-primary">Открыть раздел</span>
+      <div class="section-head fade-in">
+        <h2 class="section-title">Категории <span>товаров</span></h2>
+        <a class="section-link" href="clothes.html">Весь каталог →</a>
+      </div>
+      <div class="cat-blocks">
+        <a class="cat-block fade-in" href="clothes.html">
+          <img src="images/cat-clothes.jpg" alt="Одежда"
+            onerror="this.src='https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=800&q=70'">
+          <div class="cat-block-overlay"></div>
+          <div class="cat-block-body">
+            <div class="cat-block-label">Категория</div>
+            <div class="cat-block-title">Спортивная одежда</div>
+            <span class="cat-block-btn">Открыть →</span>
           </div>
         </a>
-
-        <a class="card fade-in" href="equipment.html">
-          <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=1200&q=80" alt="Инвентарь" />
-          <div class="card-content">
-            <h3>Спортивный инвентарь</h3>
-            <p>Товары для домашних тренировок, зала и функциональной подготовки.</p>
-            <span class="btn btn-primary">Открыть раздел</span>
+        <a class="cat-block fade-in" href="equipment.html">
+          <img src="images/cat-equipment.jpg" alt="Инвентарь"
+            onerror="this.src='https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=800&q=70'">
+          <div class="cat-block-overlay"></div>
+          <div class="cat-block-body">
+            <div class="cat-block-label">Категория</div>
+            <div class="cat-block-title">Спортивный инвентарь</div>
+            <span class="cat-block-btn">Открыть →</span>
           </div>
         </a>
-
-        <a class="card fade-in" href="nutrition.html">
-          <img src="https://images.unsplash.com/photo-1579722820308-d74e571900a9?auto=format&fit=crop&w=1200&q=80" alt="Питание" />
-          <div class="card-content">
-            <h3>Спортивное питание</h3>
-            <p>Белковые продукты, добавки и решения для восстановления.</p>
-            <span class="btn btn-primary">Открыть раздел</span>
+        <a class="cat-block fade-in" href="nutrition.html">
+          <img src="images/cat-nutrition.jpg" alt="Питание"
+            onerror="this.src='https://images.unsplash.com/photo-1579722820308-d74e571900a9?auto=format&fit=crop&w=800&q=70'">
+          <div class="cat-block-overlay"></div>
+          <div class="cat-block-body">
+            <div class="cat-block-label">Категория</div>
+            <div class="cat-block-title">Спортивное питание</div>
+            <span class="cat-block-btn">Открыть →</span>
           </div>
         </a>
       </div>
     </div>
   </section>
 
-  <section class="section">
+  <!-- FEATURED PRODUCTS -->
+  <section class="section" style="background:var(--bg2); border-top:1px solid var(--border); border-bottom:1px solid var(--border);">
     <div class="container">
-      <h2 class="section-title fade-in">Почему выбирают нас</h2>
-      <div class="benefits">
-        <div class="benefit fade-in">
-          <h3>Премиальный дизайн</h3>
-          <p>Современная визуальная подача, удобный интерфейс и качественная структура страниц.</p>
+      <div class="section-head fade-in">
+        <h2 class="section-title">Хиты <span>продаж</span></h2>
+        <a class="section-link" href="clothes.html">Все товары →</a>
+      </div>
+      <div class="product-grid">
+        <!-- Одежда -->
+        <div class="product-card fade-in">
+          <div class="product-card-img">
+            <img src="images/tshirt.jpg" alt="Футболка DryFit Pro"
+              onerror="this.src='https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=600&q=70'">
+            <span class="product-badge">Хит</span>
+          </div>
+          <div class="product-body">
+            <span class="product-cat-pill">Одежда</span>
+            <div class="product-name">Футболка DryFit Pro</div>
+            <div class="product-desc">Ткань отводит влагу в секунды — майка остаётся сухой даже в самые интенсивные тренировки.</div>
+            <div class="product-footer">
+              <div class="product-price">2 490 ₽</div>
+              <button class="add-to-cart" data-name="Футболка DryFit Pro" data-price="2490">В корзину</button>
+            </div>
+          </div>
         </div>
-        <div class="benefit fade-in">
-          <h3>Функциональный каталог</h3>
-          <p>В проекте реализованы фильтрация, поиск, корзина и оформление заказа.</p>
+        <!-- Инвентарь -->
+        <div class="product-card fade-in">
+          <div class="product-card-img">
+            <img src="images/dumbbells.jpg" alt="Набор разборных гантелей"
+              onerror="this.src='https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=600&q=70'">
+            <span class="product-badge">Хит</span>
+          </div>
+          <div class="product-body">
+            <span class="product-cat-pill">Инвентарь</span>
+            <div class="product-name">Набор разборных гантелей</div>
+            <div class="product-desc">12 дисков, два грифа, удобный хват с накаткой. Вес от 2 до 20 кг на гантель.</div>
+            <div class="product-footer">
+              <div class="product-price">6 990 ₽</div>
+              <button class="add-to-cart" data-name="Набор разборных гантелей" data-price="6990">В корзину</button>
+            </div>
+          </div>
         </div>
-        <div class="benefit fade-in">
-          <h3>Адаптивность</h3>
-          <p>Сайт корректно отображается на ноутбуках, планшетах и мобильных устройствах.</p>
+        <!-- Питание -->
+        <div class="product-card fade-in">
+          <div class="product-card-img">
+            <img src="images/whey.jpg" alt="Whey Protein Vanilla"
+              onerror="this.src='https://images.unsplash.com/photo-1607619056574-7b8d3ee536b2?auto=format&fit=crop&w=600&q=70'">
+            <span class="product-badge">Хит</span>
+          </div>
+          <div class="product-body">
+            <span class="product-cat-pill">Питание</span>
+            <div class="product-name">Whey Protein Vanilla</div>
+            <div class="product-desc">25 г белка на порцию, без аспартама. Растворяется без комков, вкус не приедается.</div>
+            <div class="product-footer">
+              <div class="product-price">3 790 ₽</div>
+              <button class="add-to-cart" data-name="Whey Protein Vanilla" data-price="3790">В корзину</button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- REVIEWS -->
   <section class="section">
     <div class="container">
-      <h2 class="section-title fade-in">Отзывы клиентов</h2>
-      <div class="reviews">
-        <div class="review fade-in">
-          <h3>Алексей</h3>
-          <p>Понравилось, что всё очень структурировано: от главной страницы до корзины и контактов.</p>
-        </div>
-        <div class="review fade-in">
-          <h3>Дарья</h3>
-          <p>Сайт выглядит дорого и современно. Особенно понравился поиск по товарам и тёмная тема.</p>
-        </div>
-        <div class="review fade-in">
-          <h3>Никита</h3>
-          <p>Отличный вариант для учебного проекта: красиво, удобно и с полноценным функционалом.</p>
-        </div>
+      <div class="section-head fade-in">
+        <h2 class="section-title">Что говорят <span>покупатели</span></h2>
       </div>
+      <div class="reviews-grid" id="reviewsGrid"></div>
     </div>
   </section>
 
-  <section class="section">
+  <!-- FAQ -->
+  <section class="section" style="background:var(--bg2); border-top:1px solid var(--border);">
     <div class="container">
-      <h2 class="section-title fade-in">FAQ</h2>
-      <div class="faq-list">
-        <div class="faq-item fade-in">
-          <h3>Можно ли оформить заказ прямо на сайте?</h3>
-          <p>Да, в демонстрационном режиме реализована корзина и модальное окно с подтверждением оформления.</p>
-        </div>
-        <div class="faq-item fade-in">
-          <h3>Работает ли сайт на мобильных устройствах?</h3>
-          <p>Да, верстка адаптивная, поэтому сайт корректно выглядит на смартфонах и планшетах.</p>
-        </div>
-        <div class="faq-item fade-in">
-          <h3>Какие технологии использованы?</h3>
-          <p>Проект выполнен на HTML, CSS и JavaScript без серверной части и без сложной настройки.</p>
-        </div>
+      <div class="section-head fade-in">
+        <h2 class="section-title">Частые <span>вопросы</span></h2>
       </div>
+      <div class="faq-list" id="faqList"></div>
     </div>
   </section>
 
+  <!-- MODAL -->
+  <div class="modal-backdrop" id="orderModal">
+    <div class="modal-box">
+      <div class="modal-icon">✅</div>
+      <h3>Заказ принят!</h3>
+      <p>Спасибо за покупку. Наш менеджер свяжется с вами в течение 30 минут для подтверждения заказа.</p>
+      <button class="modal-close" id="closeModal">Отлично!</button>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
   <footer class="footer">
     <div class="container">
-      <p>© 2026 SportStyle Premium. Учебный проект спортивного интернет-магазина.</p>
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo">Sport<span>Style</span> Premium</div>
+          <p class="footer-desc">Экипировка, инвентарь и питание для спортсменов любого уровня. Работаем с 2018 года.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Каталог</h4>
+          <ul>
+            <li><a href="clothes.html">Спортивная одежда</a></li>
+            <li><a href="equipment.html">Инвентарь</a></li>
+            <li><a href="nutrition.html">Спортивное питание</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Компания</h4>
+          <ul>
+            <li><a href="about.html">О нас</a></li>
+            <li><a href="contacts.html">Контакты</a></li>
+            <li><a href="#">Доставка и оплата</a></li>
+            <li><a href="#">Возврат товара</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Контакты</h4>
+          <ul>
+            <li><a href="tel:+79991234567">+7 (999) 123-45-67</a></li>
+            <li><a href="mailto:info@sportstyle.ru">info@sportstyle.ru</a></li>
+            <li><a href="#">ВКонтакте</a></li>
+            <li><a href="#">Telegram</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 SportStyle Premium. Все права защищены.</span>
+        <div class="footer-bottom-links">
+          <a href="#">Политика конфиденциальности</a>
+          <a href="#">Пользовательское соглашение</a>
+        </div>
+      </div>
     </div>
   </footer>
 
+  <script src="config.js"></script>
+  <script src="data.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
